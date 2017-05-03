@@ -79,12 +79,13 @@ class BatchManager {
     // A map of token => JobContext, where JobContext is an object of data that is per-job,
     // and will be passed into plugins and used for the final result.
     this.jobContexts = tokens.reduce((obj, token) => {
-      const { name, data, metadata } = jobs[token];
+      const { name, data, custom, metadata } = jobs[token];
       /* eslint no-param-reassign: 1 */
       obj[token] = {
         name,
         token,
         props: data,
+        custom: custom,
         metadata,
         statusCode: 200,
         duration: null,
